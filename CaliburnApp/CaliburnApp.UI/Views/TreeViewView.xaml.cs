@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CaliburnApp.UI
+namespace CaliburnApp.UI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TreeViewView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TreeViewView : UserControl
     {
-        public MainWindow()
+        public TreeViewView()
         {
             InitializeComponent();
         }
