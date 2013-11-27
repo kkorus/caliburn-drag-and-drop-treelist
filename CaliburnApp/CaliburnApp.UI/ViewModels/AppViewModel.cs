@@ -9,5 +9,11 @@ namespace CaliburnApp.UI.ViewModels
 {
     public class ShellViewModel : PropertyChangedBase
     {
+        public ShellViewModel(TreeListViewModel treeListViewModel)
+        {
+            TreeList = treeListViewModel;
+        }
+
+        public TreeListViewModel TreeList { get; set; }
     }
 }

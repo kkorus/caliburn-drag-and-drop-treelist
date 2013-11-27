@@ -38,5 +38,9 @@ C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\CaliburnApp.
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\App.baml
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\ShellView.baml
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\ShellView.g.cs
-C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeViewView.baml
-C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeViewView.g.cs
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Unity.AutoRegistration.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeListView.g.cs
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeListView.baml

@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="CaliburnApp.UI.Views.TreeListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodels="clr-namespace:CaliburnApp.UI.ViewModels"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <TreeView Name="Nodes" AllowDrop="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                    <cal:ActionMessage MethodName="PreviewMouseLeftButtonDown">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="PreviewMouseMove">
+                    <cal:ActionMessage MethodName="MouseMove">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Drop">
+                    <cal:ActionMessage MethodName="NodeDrop">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="DragEnter">
+                    <cal:ActionMessage MethodName="NodeDragEnter">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <!--<Setter Property="cal:Message.Attach" Value="[Event DragOver] = [Action NodeDragOver]" />
+                    <Setter Property="cal:Message.Attach" Value="[Event Drop] = [Action NodeDrop]" />
+                    <Setter Property="cal:Message.Attach" Value="[Event MouseDown] = [Action NodeDrop]" />
+                    <Setter Property="cal:Message.Attach" Value="[Event ItemDrag] = [Action NodeDrop]" />
+                    <Setter Property="cal:Message.Attach" Value="[Event ItemDrag] = [Action NodeDrop]" />
+                    <Setter Property="cal:Message.Attach" Value="[Event MouseMove] = [Action MouseMove(]" />-->
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate ItemsSource="{Binding Childs}" DataType="{x:Type viewmodels:Node}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+
+        </TreeView>
+    </Grid>
+</UserControl>
