@@ -46,19 +46,19 @@ namespace CaliburnApp.UI.ViewModels
             Nodes = new ObservableCollection<Node>();
 
             var root1 = new Node(1, "Parent 1");
-            root1.Childs.Add(new Node(2, "Child 1", 1));
-            root1.Childs.Add(new Node(3, "Child 2", 1));
-            root1.Childs.Add(new Node(4, "Child 3", 1));
-            root1.Childs.Add(new Node(5, "Child 4", 1));
-            root1.Childs.Add(new Node(6, "Child 5", 1));
+            root1.Childs.Add(new Node(2, "Child 1 1", 1));
+            root1.Childs.Add(new Node(3, "Child 1 2", 1));
+            root1.Childs.Add(new Node(4, "Child 1 3", 1));
+            root1.Childs.Add(new Node(5, "Child 1 4", 1));
+            root1.Childs.Add(new Node(6, "Child 1 5", 1));
             Nodes.Add(root1);
 
             var root2 = new Node(7, "Parent 2");
-            root2.Childs.Add(new Node(8, "Child 1", 7));
-            root2.Childs.Add(new Node(9, "Child 2", 7));
-            root2.Childs.Add(new Node(10, "Child 3", 7));
-            root2.Childs.Add(new Node(11, "Child 4", 7));
-            root2.Childs.Add(new Node(12, "Child 5", 7));
+            root2.Childs.Add(new Node(8, "Child 2 1", 7));
+            root2.Childs.Add(new Node(9, "Child 2 2", 7));
+            root2.Childs.Add(new Node(10, "Child 2 3", 7));
+            root2.Childs.Add(new Node(11, "Child 2 4", 7));
+            root2.Childs.Add(new Node(12, "Child 2 5", 7));
             Nodes.Add(root2);
         }
 
