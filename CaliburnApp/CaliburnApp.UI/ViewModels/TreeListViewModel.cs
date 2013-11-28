@@ -177,8 +177,7 @@ namespace CaliburnApp.UI.ViewModels
                     || Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
                     var treeView = sender as TreeView;
-                    var treeViewItem =
-                        FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
+                    var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
 
                     if (treeView == null || treeViewItem == null)
                         return;

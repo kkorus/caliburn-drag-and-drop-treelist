@@ -19,6 +19,7 @@ namespace CaliburnApp.UI
         {
             this.container = new Container().Build();
             Database.SetInitializer(new DbInitializer());
+            AutoMapperConfiguration.Configure();
         }
 
         public IServiceLocator Container

@@ -52,3 +52,6 @@ C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.Domain.pdb
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.xml
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.SqlServer.xml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\AutoMapper.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\AutoMapper.Net4.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\AutoMapper.xml
