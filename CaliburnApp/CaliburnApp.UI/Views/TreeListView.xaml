@@ -12,13 +12,13 @@
         <TreeView Name="Nodes" AllowDrop="True">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                    <cal:ActionMessage MethodName="PreviewMouseLeftButtonDown">
+                    <cal:ActionMessage MethodName="NodePreviewMouseLeftButtonDown">
                         <cal:Parameter Value="$source" />
                         <cal:Parameter Value="$eventArgs" />
                     </cal:ActionMessage>
                 </i:EventTrigger>
                 <i:EventTrigger EventName="PreviewMouseMove">
-                    <cal:ActionMessage MethodName="MouseMove">
+                    <cal:ActionMessage MethodName="NodeMouseMove">
                         <cal:Parameter Value="$source" />
                         <cal:Parameter Value="$eventArgs" />
                     </cal:ActionMessage>
@@ -36,6 +36,21 @@
                     </cal:ActionMessage>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+            <TreeView.ContextMenu>
+                <ContextMenu ItemsSource="{Binding MenuItems}">
+                    <MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]">
+                    </MenuItem>
+                    <MenuItem Header="Cut" cal:Message.Attach="[Event Click] = [Action Cut]"></MenuItem>
+                    <MenuItem Header="Paste" cal:Message.Attach="[Event Click] = [Action Paste]" IsEnabled="{Binding IsPasteEnabled}"></MenuItem>
+                    <ContextMenu.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Name}"/>
+                            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+                            <Setter Property="Command" Value="{Binding MenuCommand}"/>
+                        </Style>
+                    </ContextMenu.ItemContainerStyle>
+                </ContextMenu>
+            </TreeView.ContextMenu>
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />

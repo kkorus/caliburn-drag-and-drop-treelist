@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using CaliburnApp.DataAccess;
+using CaliburnApp.Domain;
+using CaliburnApp.Domain.Entities;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using Unity.AutoRegistration;
@@ -41,6 +45,8 @@ namespace CaliburnApp.UI
         /// <param name="unity">The unity.</param>
         private static void ServicesRegistration(IUnityContainer unity)
         {
+            unity.RegisterType<DbContext, DatabaseContext>();
+            unity.RegisterType<IRepository<DictionaryItem>, Repository<DictionaryItem>>();
         }
 
         /// <summary>

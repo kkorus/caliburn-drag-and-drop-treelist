@@ -1,0 +1,12 @@
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\obj\Debug\CaliburnApp.DataAccess.csprojResolveAssemblyReference.cache
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\CaliburnApp.DataAccess.dll.config
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\CaliburnApp.DataAccess.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\CaliburnApp.DataAccess.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\CaliburnApp.Domain.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\EntityFramework.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\CaliburnApp.Domain.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\EntityFramework.xml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\obj\Debug\CaliburnApp.DataAccess.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.DataAccess\obj\Debug\CaliburnApp.DataAccess.pdb

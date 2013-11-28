@@ -1,0 +1,5 @@
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\CaliburnApp.Domain.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\CaliburnApp.Domain.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.csprojResolveAssemblyReference.cache
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.pdb

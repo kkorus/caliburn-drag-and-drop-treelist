@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliburnApp.UI", "CaliburnApp.UI\CaliburnApp.UI.csproj", "{F98638D9-E8A4-491E-9EAB-98E0D8507F40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliburnApp.Domain", "CaliburnApp.Domain\CaliburnApp.Domain.csproj", "{0092ADB4-2A42-48B1-A6C6-16492A2153DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliburnApp.DataAccess", "CaliburnApp.DataAccess\CaliburnApp.DataAccess.csproj", "{EBC37C03-0B8B-43F2-959A-5991F4C34BDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F98638D9-E8A4-491E-9EAB-98E0D8507F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98638D9-E8A4-491E-9EAB-98E0D8507F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98638D9-E8A4-491E-9EAB-98E0D8507F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0092ADB4-2A42-48B1-A6C6-16492A2153DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0092ADB4-2A42-48B1-A6C6-16492A2153DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0092ADB4-2A42-48B1-A6C6-16492A2153DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0092ADB4-2A42-48B1-A6C6-16492A2153DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC37C03-0B8B-43F2-959A-5991F4C34BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC37C03-0B8B-43F2-959A-5991F4C34BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC37C03-0B8B-43F2-959A-5991F4C34BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC37C03-0B8B-43F2-959A-5991F4C34BDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,3 +44,11 @@ C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Microsoft.Pr
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeListView.g.cs
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\obj\Debug\Views\TreeListView.baml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.DataAccess.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.Domain.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.SqlServer.dll
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.DataAccess.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\CaliburnApp.Domain.pdb
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.xml
+C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.UI\bin\Debug\EntityFramework.SqlServer.xml
