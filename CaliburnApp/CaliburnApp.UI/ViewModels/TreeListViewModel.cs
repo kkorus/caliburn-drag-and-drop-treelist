@@ -9,6 +9,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Caliburn.Micro;
+using CaliburnApp.Domain;
+using CaliburnApp.Domain.Entities;
 
 namespace CaliburnApp.UI.ViewModels
 {
@@ -54,13 +56,16 @@ namespace CaliburnApp.UI.ViewModels
 
     public class TreeListViewModel : PropertyChangedBase
     {
-        private Point startPoint;
+        private Point _startPoint;
         private TreeListViewModel parent;
         public ObservableCollection<Node> Nodes { get; set; }
+        private readonly IRepository<DictionaryItem> _dictionaryItemRepository;
 
-        public TreeListViewModel()
+        public TreeListViewModel(IRepository<DictionaryItem> repository)
         {
-            SetDummyData();
+            _dictionaryItemRepository = repository;
+            var test = _dictionaryItemRepository.Items().ToList();
+            // SetDummyData();
         }
 
         private void SetDummyData()
@@ -83,6 +88,11 @@ namespace CaliburnApp.UI.ViewModels
             root2.AddChild(new Node(11, "Child 2 4", 7));
             root2.AddChild(new Node(12, "Child 2 5", 7));
             Nodes.Add(root2);
+        }
+
+        private void SetData()
+        {
+
         }
 
         private bool isSelected;
@@ -129,7 +139,7 @@ namespace CaliburnApp.UI.ViewModels
 
         public void NodePreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            startPoint = e.GetPosition(null);
+            _startPoint = e.GetPosition(null);
         }
 
         public void NodeDragEnter(object sender, DragEventArgs e)
@@ -146,12 +156,9 @@ namespace CaliburnApp.UI.ViewModels
             if (e.Data.GetDataPresent(typeof(Node)))
             {
                 var node = e.Data.GetData(typeof(Node)) as Node;
-
-                var treeViewItem =
-                    FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
+                var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
 
                 var dropTarget = treeViewItem.Header as Node;
-
                 if (dropTarget == null || node == null)
                     return;
 
@@ -164,7 +171,7 @@ namespace CaliburnApp.UI.ViewModels
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var mousePos = e.GetPosition(null);
-                var diff = startPoint - mousePos;
+                var diff = _startPoint - mousePos;
 
                 if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance
                     || Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
@@ -205,8 +212,6 @@ namespace CaliburnApp.UI.ViewModels
         {
             return false;
         }
-
-
 
         // Helper to search up the VisualTree
         private static T FindAnchestor<T>(DependencyObject current)

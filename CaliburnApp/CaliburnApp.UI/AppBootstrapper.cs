@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using CaliburnApp.DataAccess;
 using CaliburnApp.UI.ViewModels;
 using Microsoft.Practices.ServiceLocation;
 
@@ -16,6 +18,7 @@ namespace CaliburnApp.UI
         public AppBootstrapper()
         {
             this.container = new Container().Build();
+            Database.SetInitializer(new DbInitializer());
         }
 
         public IServiceLocator Container
