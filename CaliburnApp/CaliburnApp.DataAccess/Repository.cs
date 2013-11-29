@@ -17,9 +17,9 @@ namespace CaliburnApp.DataAccess
             _context = context;
         }
 
-        public IEnumerable<T> Items()
+        public IQueryable<T> Items()
         {
-            return _context.Set<T>().AsEnumerable();
+            return _context.Set<T>().AsQueryable();
         }
     }
 }

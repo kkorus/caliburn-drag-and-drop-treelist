@@ -47,6 +47,7 @@ namespace CaliburnApp.UI
         {
             unity.RegisterType<DbContext, DatabaseContext>();
             unity.RegisterType<IRepository<DictionaryItem>, Repository<DictionaryItem>>();
+            unity.RegisterType<IRepository<Dictionary>, Repository<Dictionary>>();
         }
 
         /// <summary>

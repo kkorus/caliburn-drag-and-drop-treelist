@@ -17,6 +17,12 @@
                         <cal:Parameter Value="$eventArgs" />
                     </cal:ActionMessage>
                 </i:EventTrigger>
+                <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                    <cal:ActionMessage MethodName="NodePreviewMouseRightButtonDown">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
                 <i:EventTrigger EventName="PreviewMouseMove">
                     <cal:ActionMessage MethodName="NodeMouseMove">
                         <cal:Parameter Value="$source" />
@@ -38,10 +44,10 @@
             </i:Interaction.Triggers>
             <TreeView.ContextMenu>
                 <ContextMenu ItemsSource="{Binding MenuItems}">
-                    <MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]">
-                    </MenuItem>
+                    <MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]"></MenuItem>
+                    <!--<MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]"></MenuItem>-->
                     <MenuItem Header="Cut" cal:Message.Attach="[Event Click] = [Action Cut]"></MenuItem>
-                    <MenuItem Header="Paste" cal:Message.Attach="[Event Click] = [Action Paste]" IsEnabled="{Binding IsPasteEnabled}"></MenuItem>
+                    <MenuItem Header="Paste" cal:Message.Attach="[Event Click] = [Action Paste($this)]" IsEnabled="{Binding IsPasteEnabled}"></MenuItem>
                     <ContextMenu.ItemContainerStyle>
                         <Style TargetType="MenuItem">
                             <Setter Property="Header" Value="{Binding Name}"/>
@@ -55,12 +61,6 @@
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-                    <!--<Setter Property="cal:Message.Attach" Value="[Event DragOver] = [Action NodeDragOver]" />
-                    <Setter Property="cal:Message.Attach" Value="[Event Drop] = [Action NodeDrop]" />
-                    <Setter Property="cal:Message.Attach" Value="[Event MouseDown] = [Action NodeDrop]" />
-                    <Setter Property="cal:Message.Attach" Value="[Event ItemDrag] = [Action NodeDrop]" />
-                    <Setter Property="cal:Message.Attach" Value="[Event ItemDrag] = [Action NodeDrop]" />
-                    <Setter Property="cal:Message.Attach" Value="[Event MouseMove] = [Action MouseMove(]" />-->
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
@@ -68,7 +68,6 @@
                     <TextBlock Text="{Binding Name}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
-
         </TreeView>
     </Grid>
 </UserControl>

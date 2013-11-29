@@ -8,6 +8,6 @@ namespace CaliburnApp.Domain
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> Items();
+        IQueryable<T> Items();
     }
 }

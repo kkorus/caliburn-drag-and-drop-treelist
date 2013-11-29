@@ -20,7 +20,7 @@ namespace CaliburnApp.DataAccess
         {
             IDbSet<Dictionary> dictionaries = context.Set<Dictionary>();
 
-            var dictionary1 = new Dictionary { Name = "Dictionry1" };
+            var dictionary1 = new Dictionary { Name = "Dictionary 1" };
             dictionary1.Items.Add(new DictionaryItem { Name = "Item 1 1"});
             dictionary1.Items.Add(new DictionaryItem { Name = "Item 1 2"});
             dictionary1.Items.Add(new DictionaryItem { Name = "Item 1 3"});
@@ -29,7 +29,7 @@ namespace CaliburnApp.DataAccess
             dictionary1.Items.Add(new DictionaryItem { Name = "Item 1 6"});
             dictionary1.Items.Add(new DictionaryItem { Name = "Item 1 7"});
 
-            var dictionary2 = new Dictionary { Name = "Dictionry2" };
+            var dictionary2 = new Dictionary { Name = "Dictionary 2" };
             dictionary2.Items.Add(new DictionaryItem { Name = "Item 2 1" });
             dictionary2.Items.Add(new DictionaryItem { Name = "Item 2 2" });
             dictionary2.Items.Add(new DictionaryItem { Name = "Item 2 3" });

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Data.Entity;
 using System.Windows.Input;
 using System.Windows.Media;
 using AutoMapper;
@@ -67,11 +68,15 @@ namespace CaliburnApp.UI.ViewModels
 
         private Point _startPoint;
         private TreeListViewModel _parent;
-        private readonly IRepository<DictionaryItem> _dictionaryItemRepository;
+        private readonly IRepository<Dictionary> _dictionaryItemRepository;
         public ObservableCollection<Node> Nodes { get; set; }
+        public TreeViewItem SelectedItem { get; set; }
+        public TreeViewItem PasteTo { get; set; }
+        public bool IsCopying { get; set; }
 
-        public TreeListViewModel(IRepository<DictionaryItem> repository)
+        public TreeListViewModel(IRepository<Dictionary> repository)
         {
+            Nodes = new ObservableCollection<Node>();
             _dictionaryItemRepository = repository;
 
             SetData();
@@ -81,8 +86,6 @@ namespace CaliburnApp.UI.ViewModels
         private void SetDummyData()
         {
             // data retrived from database
-            Nodes = new ObservableCollection<Node>();
-
             var root1 = new Node(1, "Parent 1");
             (new Node(2, "Child 1 1")).Parent = root1;
             (new Node(3, "Child 1 2")).Parent = root1;
@@ -102,9 +105,16 @@ namespace CaliburnApp.UI.ViewModels
 
         private void SetData()
         {
-            var dictionaryItems = _dictionaryItemRepository.Items().ToList();
-
-            var test = Mapper.Map<Node>(dictionaryItems.First());
+            var dictionaryItems = _dictionaryItemRepository.Items().Include(x => x.Items).ToList();
+            foreach (var dictionary in dictionaryItems)
+            {
+                var root = Mapper.Map<Node>(dictionary);
+                foreach (var item in dictionary.Items)
+                {
+                    Mapper.Map<Node>(item).Parent = root;
+                }
+                Nodes.Add(root);
+            }
         }
 
         private bool isSelected;
@@ -141,6 +151,23 @@ namespace CaliburnApp.UI.ViewModels
         public void NodePreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             _startPoint = e.GetPosition(null);
+        }
+
+        public void NodePreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
+            if (treeViewItem != null)
+            {
+                if(!IsCopying)
+                    SelectedItem = treeViewItem;
+                else
+                {
+                    PasteTo = treeViewItem;
+                }
+
+                treeViewItem.Focus();
+                e.Handled = true;
+            }
         }
 
         public void NodeDragEnter(object sender, DragEventArgs e)
@@ -193,9 +220,9 @@ namespace CaliburnApp.UI.ViewModels
             }
         }
 
-        public void Copy(object sender, RoutedEventArgs e)
+        public void Copy(object sender, RoutedEventArgs args)
         {
-            Clipboard.SetDataObject(sender);
+            IsCopying = true;
         }
 
         public void Cut()
