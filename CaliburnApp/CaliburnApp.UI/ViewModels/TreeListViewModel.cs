@@ -17,8 +17,7 @@ namespace CaliburnApp.UI.ViewModels
     public class Node
     {
         public int Id { get; set; }
-        public int? ParentId { get; set; }
-        public Node Parent { get; set; }
+        //public Node Parent { get; set; }
         public string Name { get; set; }
         public ObservableCollection<Node> Childs { get; set; }
 
@@ -26,7 +25,6 @@ namespace CaliburnApp.UI.ViewModels
         {
             Id = id;
             Name = name;
-            ParentId = parentId;
             Childs = new ObservableCollection<Node>();
         }
 
@@ -36,20 +34,25 @@ namespace CaliburnApp.UI.ViewModels
             Childs.Add(child);
         }
 
-        public void ChangeParent(Node value)
+        private Node _parent;
+        public Node Parent
         {
-            if (value != Parent)
+            get { return _parent; }
+            set
             {
-                Node oldParent = Parent;
-                Parent = value;
-
-                if(oldParent != null)
-                    oldParent.Childs.Remove(this);
-                else
+                if (value != Parent)
                 {
+                    Node oldParent = Parent;
                     Parent = value;
+
+                    if (oldParent != null)
+                        oldParent.Childs.Remove(this);
+                    else
+                    {
+                        Parent = value;
+                    }
+                    Parent.Childs.Add(this);
                 }
-                Parent.Childs.Add(this);
             }
         }
     }
@@ -57,15 +60,16 @@ namespace CaliburnApp.UI.ViewModels
     public class TreeListViewModel : PropertyChangedBase
     {
         private Point _startPoint;
-        private TreeListViewModel parent;
-        public ObservableCollection<Node> Nodes { get; set; }
+        private TreeListViewModel _parent;
         private readonly IRepository<DictionaryItem> _dictionaryItemRepository;
+        public ObservableCollection<Node> Nodes { get; set; }
 
         public TreeListViewModel(IRepository<DictionaryItem> repository)
         {
             _dictionaryItemRepository = repository;
-            var test = _dictionaryItemRepository.Items().ToList();
-            // SetDummyData();
+
+            //var test = _dictionaryItemRepository.Items().ToList();
+            SetDummyData();
         }
 
         private void SetDummyData()
@@ -121,8 +125,8 @@ namespace CaliburnApp.UI.ViewModels
                     NotifyOfPropertyChange(() => IsExpanded);
                 }
 
-                if (isExpanded && parent != null && !parent.IsExpanded)
-                    parent.IsExpanded = true;
+                if (isExpanded && _parent != null && !_parent.IsExpanded)
+                    _parent.IsExpanded = true;
 
                 //lazy loading of children
                 //if (!childrenLoaded)
@@ -162,7 +166,7 @@ namespace CaliburnApp.UI.ViewModels
                 if (dropTarget == null || node == null)
                     return;
 
-                node.ChangeParent(dropTarget);
+                node.Parent = dropTarget;
             }
         }
 
