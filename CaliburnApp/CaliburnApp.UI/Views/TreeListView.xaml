@@ -64,7 +64,7 @@
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
-                <HierarchicalDataTemplate ItemsSource="{Binding Childs}" DataType="{x:Type viewmodels:Node}">
+                <HierarchicalDataTemplate ItemsSource="{Binding Childs}" DataType="{x:Type viewmodels:TreeListViewModel+Node}">
                     <TextBlock Text="{Binding Name}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>

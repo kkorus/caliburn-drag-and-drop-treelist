@@ -8,57 +8,63 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using AutoMapper;
 using Caliburn.Micro;
 using CaliburnApp.Domain;
 using CaliburnApp.Domain.Entities;
 
 namespace CaliburnApp.UI.ViewModels
 {
-    public class Node
+    public class TreeListViewModel : PropertyChangedBase
     {
-        public int Id { get; set; }
-        //public Node Parent { get; set; }
-        public string Name { get; set; }
-        public ObservableCollection<Node> Childs { get; set; }
-
-        public Node(int id, string name, int? parentId = null)
+        public class Node
         {
-            Id = id;
-            Name = name;
-            Childs = new ObservableCollection<Node>();
-        }
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public ObservableCollection<Node> Childs { get; set; }
 
-        public void AddChild(Node child)
-        {
-            child.Parent = this;
-            Childs.Add(child);
-        }
-
-        private Node _parent;
-        public Node Parent
-        {
-            get { return _parent; }
-            set
+            public Node(int id, string name)
             {
-                if (value != Parent)
-                {
-                    Node oldParent = Parent;
-                    Parent = value;
+                Id = id;
+                Name = name;
+                Childs = new ObservableCollection<Node>();
+            }
 
-                    if (oldParent != null)
-                        oldParent.Childs.Remove(this);
-                    else
+            /// <summary>
+            /// to delete ?
+            /// </summary>
+            /// <param name="child"></param>
+            public void AddChild(Node child)
+            {
+                child.Parent = this;
+            }
+
+            private Node _parent;
+            public Node Parent
+            {
+                get { return _parent; }
+                set
+                {
+                    if (value != _parent)
                     {
-                        Parent = value;
+                        Node oldParent = _parent;
+                        _parent = value;
+
+                        if (oldParent != null)
+                        {
+                            oldParent.Childs.Remove(this);
+                        }
+                        else
+                        {
+                            _parent = value;
+                        }
+
+                        _parent.Childs.Add(this);
                     }
-                    Parent.Childs.Add(this);
                 }
             }
         }
-    }
 
-    public class TreeListViewModel : PropertyChangedBase
-    {
         private Point _startPoint;
         private TreeListViewModel _parent;
         private readonly IRepository<DictionaryItem> _dictionaryItemRepository;
@@ -68,8 +74,8 @@ namespace CaliburnApp.UI.ViewModels
         {
             _dictionaryItemRepository = repository;
 
-            //var test = _dictionaryItemRepository.Items().ToList();
-            SetDummyData();
+            SetData();
+            //SetDummyData();
         }
 
         private void SetDummyData()
@@ -78,25 +84,27 @@ namespace CaliburnApp.UI.ViewModels
             Nodes = new ObservableCollection<Node>();
 
             var root1 = new Node(1, "Parent 1");
-            root1.AddChild(new Node(2, "Child 1 1", 1));
-            root1.AddChild(new Node(3, "Child 1 2", 1));
-            root1.AddChild(new Node(4, "Child 1 3", 1));
-            root1.AddChild(new Node(5, "Child 1 4", 1));
-            root1.AddChild(new Node(6, "Child 1 5", 1));
+            (new Node(2, "Child 1 1")).Parent = root1;
+            (new Node(3, "Child 1 2")).Parent = root1;
+            (new Node(4, "Child 1 3")).Parent = root1;
+            (new Node(5, "Child 1 4")).Parent = root1;
+            (new Node(6, "Child 1 5")).Parent = root1;
             Nodes.Add(root1);
 
             var root2 = new Node(7, "Parent 2");
-            root2.AddChild(new Node(8, "Child 2 1", 7));
-            root2.AddChild(new Node(9, "Child 2 2", 7));
-            root2.AddChild(new Node(10, "Child 2 3", 7));
-            root2.AddChild(new Node(11, "Child 2 4", 7));
-            root2.AddChild(new Node(12, "Child 2 5", 7));
+            (new Node(8, "Child 2 1")).Parent = root2;
+            (new Node(9, "Child 2 2")).Parent = root2;
+            (new Node(10, "Child 2 3")).Parent = root2;
+            (new Node(11, "Child 2 4")).Parent = root2;
+            (new Node(12, "Child 2 5")).Parent = root2;
             Nodes.Add(root2);
         }
 
         private void SetData()
         {
+            var dictionaryItems = _dictionaryItemRepository.Items().ToList();
 
+            var test = Mapper.Map<Node>(dictionaryItems.First());
         }
 
         private bool isSelected;
@@ -127,17 +135,6 @@ namespace CaliburnApp.UI.ViewModels
 
                 if (isExpanded && _parent != null && !_parent.IsExpanded)
                     _parent.IsExpanded = true;
-
-                //lazy loading of children
-                //if (!childrenLoaded)
-                //{
-                //    this.Children.Remove(emptyChild);
-                //    foreach (var directory in this.info.EnumerateDirectories())
-                //    {
-                //        children.Add(new FolderViewModel(directory, this));
-                //    }
-                //    childrenLoaded = true;
-                //}
             }
         }
 
@@ -163,7 +160,7 @@ namespace CaliburnApp.UI.ViewModels
                 var treeViewItem = FindAnchestor<TreeViewItem>((DependencyObject)e.OriginalSource);
 
                 var dropTarget = treeViewItem.Header as Node;
-                if (dropTarget == null || node == null)
+                if ((node == dropTarget) || dropTarget == null || node == null)
                     return;
 
                 node.Parent = dropTarget;
