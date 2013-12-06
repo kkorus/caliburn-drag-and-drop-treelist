@@ -8,3 +8,13 @@ C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFr
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.xml
 C:\PROJECTS\GitHub\CaliburnApp\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\CaliburnApp.Domain.dll.config
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\CaliburnApp.Domain.dll
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\CaliburnApp.Domain.pdb
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.dll
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.xml
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.csprojResolveAssemblyReference.cache
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.dll
+C:\Users\kkorus\Desktop\CaliburnApp\CaliburnApp.Domain\obj\Debug\CaliburnApp.Domain.pdb

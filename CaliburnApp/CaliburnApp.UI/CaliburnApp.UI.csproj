@@ -106,7 +106,9 @@
     </ApplicationDefinition>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="Container.cs" />
-    <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="Extensions\LinqExtensionsMethods.cs" />
+    <Compile Include="ObservableCollectionExtensions.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TreeListViewModel.cs" />
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>

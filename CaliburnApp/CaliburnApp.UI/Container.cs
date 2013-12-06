@@ -11,6 +11,8 @@ using CaliburnApp.Domain.Entities;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using Unity.AutoRegistration;
+using CaliburnApp.Domain.Contracts;
+using CaliburnApp.Domain.Services;
 
 namespace CaliburnApp.UI
 {
@@ -48,6 +50,8 @@ namespace CaliburnApp.UI
             unity.RegisterType<DbContext, DatabaseContext>();
             unity.RegisterType<IRepository<DictionaryItem>, Repository<DictionaryItem>>();
             unity.RegisterType<IRepository<Dictionary>, Repository<Dictionary>>();
+            unity.RegisterType<IRepository<BusinessValueObject>, Repository<BusinessValueObject>>();
+            unity.RegisterType<IBusinessValueObjectsService, BusinessValueObjectsService>();
         }
 
         /// <summary>

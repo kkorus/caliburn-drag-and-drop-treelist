@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace CaliburnApp.Domain.Entities
 {
     [Table("DictionaryItems")]
-    public class DictionaryItem
+    public class DictionaryItem : Entity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public Dictionary Dictionary { get; set; }
     }

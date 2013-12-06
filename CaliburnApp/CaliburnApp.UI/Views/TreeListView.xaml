@@ -8,8 +8,8 @@
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TreeView Name="Nodes" AllowDrop="True">
+    <DockPanel>
+        <TreeView Name="Nodes" AllowDrop="True" DockPanel.Dock="Left" Width="150">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                     <cal:ActionMessage MethodName="NodePreviewMouseLeftButtonDown">
@@ -34,40 +34,35 @@
                         <cal:Parameter Value="$source" />
                         <cal:Parameter Value="$eventArgs" />
                     </cal:ActionMessage>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="DragEnter">
+                </i:EventTrigger> <i:EventTrigger EventName="DragEnter">
                     <cal:ActionMessage MethodName="NodeDragEnter">
                         <cal:Parameter Value="$source" />
                         <cal:Parameter Value="$eventArgs" />
                     </cal:ActionMessage>
                 </i:EventTrigger>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <cal:ActionMessage MethodName="NodeMouseDoubleClick">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventArgs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
             </i:Interaction.Triggers>
-            <TreeView.ContextMenu>
-                <ContextMenu ItemsSource="{Binding MenuItems}">
-                    <MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]"></MenuItem>
-                    <!--<MenuItem Header="Copy" cal:Message.Attach="[Event Click] = [Action Copy($source, $eventArgs)]"></MenuItem>-->
-                    <MenuItem Header="Cut" cal:Message.Attach="[Event Click] = [Action Cut]"></MenuItem>
-                    <MenuItem Header="Paste" cal:Message.Attach="[Event Click] = [Action Paste($this)]" IsEnabled="{Binding IsPasteEnabled}"></MenuItem>
-                    <ContextMenu.ItemContainerStyle>
-                        <Style TargetType="MenuItem">
-                            <Setter Property="Header" Value="{Binding Name}"/>
-                            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
-                            <Setter Property="Command" Value="{Binding MenuCommand}"/>
-                        </Style>
-                    </ContextMenu.ItemContainerStyle>
-                </ContextMenu>
-            </TreeView.ContextMenu>
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-                </Style>
-            </TreeView.ItemContainerStyle>
             <TreeView.Resources>
-                <HierarchicalDataTemplate ItemsSource="{Binding Childs}" DataType="{x:Type viewmodels:TreeListViewModel+Node}">
-                    <TextBlock Text="{Binding Name}" />
+                <HierarchicalDataTemplate ItemsSource="{Binding Childs}"
+                          DataType="{x:Type viewmodels:TreeListViewModel+Node}">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
+                                <MenuItem Header="Cut" cal:Message.Attach="Cut"  />
+                                <MenuItem Header="Copy" cal:Message.Attach="Copy" />
+                                <MenuItem Header="Paste" cal:Message.Attach="Paste" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
-    </Grid>
+        <TextBlock Name="TextContent" DockPanel.Dock="Right" Margin="5" /> 
+    </DockPanel>
 </UserControl>

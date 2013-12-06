@@ -9,6 +9,7 @@ using CaliburnApp.Domain.Entities;
 namespace CaliburnApp.DataAccess
 {
     public class DbInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
+    //public class DbInitializer : DropCreateDatabaseAlways<DatabaseContext>
     {
         protected override void Seed(DatabaseContext context)
         {
@@ -40,6 +41,32 @@ namespace CaliburnApp.DataAccess
 
             dictionaries.Add(dictionary1);
             dictionaries.Add(dictionary2);
+            
+            IDbSet<BusinessValueObject> objects = context.Set<BusinessValueObject>();
+            var solution = new BusinessValueObject { Name = "Solution" };
+
+            var businessObject1 = new BusinessValueObject { Name = "BO 1" };
+            businessObject1.Children.Add(new BusinessValueObject { Name = "Child 1" });
+            businessObject1.Children.Add(new BusinessValueObject { Name = "Child 2" });
+            businessObject1.Children.Add(new BusinessValueObject { Name = "Child 3" });
+            businessObject1.Children.Add(new BusinessValueObject { Name = "Child 4" });
+
+            var businessObject2 = new BusinessValueObject { Name = "BO 2" };
+            businessObject2.Children.Add(new BusinessValueObject { Name = "Child 1" });
+            businessObject2.Children.Add(new BusinessValueObject { Name = "Child 2" });
+            businessObject2.Children.Add(new BusinessValueObject { Name = "Child 3" });
+            businessObject2.Children.Add(new BusinessValueObject { Name = "Child 4" });
+
+            var businessObject3 = new BusinessValueObject { Name = "BO 3" };
+            var children = new BusinessValueObject { Name = "Child 1" };
+            children.Children.Add(new BusinessValueObject { Name = "Children 1" });
+            businessObject3.Children.Add(children);
+
+            solution.Children.Add(businessObject1);
+            solution.Children.Add(businessObject2);
+            solution.Children.Add(businessObject3);
+
+            objects.Add(solution);
         }
     }
 }
